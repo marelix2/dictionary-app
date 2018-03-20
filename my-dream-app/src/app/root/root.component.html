@@ -1,0 +1,10 @@
+<app-header></app-header>
+
+<mat-divider></mat-divider>
+
+<app-body *ngIf="!buttonClicked"></app-body>
+<app-add-word *ngIf="buttonClicked"></app-add-word>
+
+<mat-divider></mat-divider>
+
+<app-footer (wordAddingEvent)="ButtonClicked($event)" *ngIf="!buttonClicked"></app-footer>

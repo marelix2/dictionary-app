@@ -1,0 +1,23 @@
+.roww{
+  display: flex;
+}
+
+img{
+  margin: 0 3%;
+}
+
+.example-container {
+  width: 60%;
+}
+
+.example-container > *{
+  width: 100%;
+}
+
+.buttons{
+  margin:.75%;
+  align-items: right;
+  justify-content: space-around;
+
+}
+
