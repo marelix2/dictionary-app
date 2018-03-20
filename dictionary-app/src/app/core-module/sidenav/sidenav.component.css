@@ -1,0 +1,21 @@
+.sidebar {
+  width: 180px;
+  position: fixed;
+
+  top: 0;
+  bottom: 0;
+  margin: 0;
+}
+.logo {
+  margin: 20px auto;
+  width: 120px;
+  display: block;
+
+}
+
+.mat-button {
+  width: 100%;
+
+}
+
+
