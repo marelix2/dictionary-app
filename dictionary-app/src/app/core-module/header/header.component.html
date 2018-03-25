@@ -1,11 +1,29 @@
+<form [formGroup]="searchForm" >
+  <mat-form-field class="form" >
+    <input matInput formControlName='search' (click)="toggleDropDown()" type="text" placeholder="Podaj słowo"/>
+    <div *ngIf="plWord && showDropDown" class="state-container-dropdown" >
+      <div (click)="selectValue(word['word'])" class="words" *ngFor="let word of words | searchFilterPL: getSearchValue()">
+        <p>{{word?.word}}</p>
 
-  <mat-form-field class="form">
-    <input matInput type="text" placeholder="Podaj słowo" [(ngModel)]="value"/>
+    </div>
+    </div>
+
+      <div *ngIf="!plWord && showDropDown" class="state-container-dropdown" >
+        <div (click)="selectValue(word['key'])" class="words" *ngFor="let word of words | searchFilterAng: getSearchValue()">
+          <p>{{word?.key}}</p>
+        </div>
+    </div>
+
   </mat-form-field>
-  <button mat-fab color="primary">PL</button>
-  <button mat-fab color="primary">ANG</button>
+
+  <button mat-fab color="primary" (click)="showPolishWords()">PL</button>
+  <button mat-fab color="primary" (click)="showAngishWords()">ANG</button>
   <button mat-raised-button color="primary">Tłumacz</button>
 
+</form>
+
+
+<pre> {{searchForm.value | json}}</pre>
 
   <mat-divider></mat-divider>
 

@@ -1,15 +1,12 @@
 body{
 
-  margin: 0;
-  padding: 0;
 
 }
 
 .content-wrapper {
 
-  margin:  0 180px;
+  margin:   0 0 0 180px;
   height: 100%;
-  width: 100%;
 
 }
 

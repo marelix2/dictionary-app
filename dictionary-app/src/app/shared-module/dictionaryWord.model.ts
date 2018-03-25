@@ -1,6 +1,4 @@
-export class DictionaryWordModel{
-
+export class DictionaryWordModel {
   word: string;
   key: string;
-
 }

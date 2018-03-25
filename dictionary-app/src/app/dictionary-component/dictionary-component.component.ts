@@ -4,27 +4,16 @@ import {DictionarySearchService} from '../shared-module/dictionary-search.servic
 
 @Component({
   selector: 'app-dictionary-component',
-  templateUrl: './dictionary-component.component.html',
-  styleUrls: ['./dictionary-component.component.css']
+  templateUrl: './dictionary.component.html',
+  styleUrls: ['./dictionary.component.css']
 })
-export class DictionaryComponentComponent implements OnInit {
+export class DictionaryComponent implements OnInit {
 
-  words: DictionaryWordModel[];
 
-  constructor(private dictionarySearch : DictionarySearchService) { }
+
+  constructor() { }
 
   ngOnInit() {
-    this.loadWords();
-
-    console.log(this.words);
-  }
-
-
-  loadWords(): void {
-
-    this.dictionarySearch.getWords().subscribe((words) => {
-      this.words = words;
-    });
 
   }
 

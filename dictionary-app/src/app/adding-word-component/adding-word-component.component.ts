@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-adding-word-component',
-  templateUrl: './adding-word-component.component.html',
-  styleUrls: ['./adding-word-component.component.css']
+  selector: 'app-adding-word',
+  templateUrl: './adding-word.component.html',
+  styleUrls: ['./adding-word.component.css']
 })
-export class AddingWordComponentComponent implements OnInit {
+export class AddingWordComponent implements OnInit {
 
-  constructor() { }
+  constructor( private route: ActivatedRoute) { }
 
   ngOnInit() {
   }

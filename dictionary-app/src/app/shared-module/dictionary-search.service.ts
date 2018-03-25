@@ -3,16 +3,17 @@ import {Observable} from 'rxjs/Observable';
 import {DictionaryWordModel} from './dictionaryWord.model';
 import 'rxjs/add/operator/map';
 import {Http} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class DictionarySearchService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  getWords() : Observable<DictionaryWordModel[]>{
+  getWords(): Observable<DictionaryWordModel[]>{
 
-    return this.http.get('../../assets/words.json')
-      .map((res: any) => res.json());
+    return this.http.get<DictionaryWordModel[]>('../../assets/words.json')
+      .map((res) => res);
   }
 
 }

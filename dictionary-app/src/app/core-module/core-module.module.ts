@@ -6,9 +6,12 @@ import {RouterModule} from '@angular/router';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
+import {SearchFilterPipePL} from './header/filter-pipe-PL';
+import {SearchFilterPipeAng} from './header/filter-pipe-Ang';
+
 
 @NgModule({
   imports: [
@@ -19,9 +22,15 @@ import {MatDividerModule} from '@angular/material/divider';
     MatIconModule,
     FormsModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    ReactiveFormsModule
   ],
   exports: [HeaderComponent, SidenavComponent],
-  declarations: [ HeaderComponent, SidenavComponent]
+  declarations: [
+    HeaderComponent,
+    SidenavComponent,
+    SearchFilterPipePL,
+    SearchFilterPipeAng
+  ]
 })
 export class CoreModule { }
