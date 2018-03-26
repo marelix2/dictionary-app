@@ -1,3 +1,8 @@
-<p>
-  adding-word-component works!
-</p>
+<form class="form" [formControl]="addingWordForm">
+  <mat-form-field class="example-full-width" [form>
+    <input matInput placeholder="Słowo" formControlName='word'>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Klucz" formControlName='key'>
+  </mat-form-field>
+</form>

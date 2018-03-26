@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {SearchFilterPipePL} from './header/filter-pipe-PL';
 import {SearchFilterPipeAng} from './header/filter-pipe-Ang';
+import {CoreRoutingModule} from "./core-routing.module";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {SearchFilterPipeAng} from './header/filter-pipe-Ang';
     FormsModule,
     MatButtonModule,
     MatDividerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CoreRoutingModule
   ],
   exports: [HeaderComponent, SidenavComponent],
   declarations: [
