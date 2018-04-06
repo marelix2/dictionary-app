@@ -13,6 +13,7 @@ import {DictionaryComponent} from './dictionary-component/dictionary-component.c
 import {AddingWordComponent} from './adding-word-component/adding-word-component.component';
 import { DelWordComponent } from './del-word/del-word.component';
 import {AppRoutingModule} from './app-routing.module';
+import {CoreRoutingModule} from "./core-module/core-routing.module";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {AppRoutingModule} from './app-routing.module';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule
+
 
   ],
   providers: [DictionarySearchService],
