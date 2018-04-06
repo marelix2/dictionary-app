@@ -1,3 +1,9 @@
-<p>
-  adding-word-component works!
-</p>
+<form [formGroup]="addWordForm">
+  <mat-form-field class="form" >
+  <input matInput formControlName='word' type="text" placeholder=" podaj wyraz">
+  </mat-form-field>
+  <mat-form-field class="form" >
+  <input matInput formControlName='key' type="text" placeholder=" podaj tlumaczenie">
+  </mat-form-field>
+  <button mat-raised-button color="primary">Tłumacz</button>
+</form>

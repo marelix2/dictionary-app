@@ -1,3 +1,20 @@
-<p>
-  del-word works!
-</p>
+<div class="contianer">
+  <div class="row">
+  <table>
+    <thead>
+    <tr>
+      <th>Słowo</th>
+      <th>Klucz</th>
+      <th>Usun</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let word of words">
+      <td>{{word.word}}</td>
+      <td>{{word.key}}</td>
+      <td>( X )</td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

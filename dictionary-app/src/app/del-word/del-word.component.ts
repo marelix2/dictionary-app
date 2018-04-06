@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DictionarySearchService} from '../shared-module/dictionary-search.service';
+import {DictionaryWordModel} from '../shared-module/dictionaryWord.model';
 
 @Component({
   selector: 'app-del-word',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DelWordComponent implements OnInit {
 
-  constructor() { }
+  words: DictionaryWordModel[]
+
+  constructor( private dictionaryService: DictionarySearchService) { }
 
   ngOnInit() {
+    this.loadWords();
   }
+
+
+  loadWords(){
+
+    this.dictionaryService.getWords().subscribe((words) => {
+      this.words = words;
+    })
+  }
+
 
 }

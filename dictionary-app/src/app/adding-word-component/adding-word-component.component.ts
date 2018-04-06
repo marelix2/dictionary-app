@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-adding-word',
@@ -8,9 +9,21 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class AddingWordComponent implements OnInit {
 
-  constructor( private route: ActivatedRoute) { }
+  addWordForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.addWordForm = this.addWordFormBuild();
+  }
+
+  addWordFormBuild(): FormGroup {
+
+    return this.formBuilder.group({
+      word:[''],
+      key:['']
+    });
   }
 
 }
