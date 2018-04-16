@@ -6,7 +6,7 @@ import {DelWordComponent} from './del-word/del-word.component';
 
 const APP_ROUTE: Route[] = [
   {
-    path: 'search/:key',
+    path: 'search/:key/:lang',
     component: <any>DictionaryComponent
   },
   {

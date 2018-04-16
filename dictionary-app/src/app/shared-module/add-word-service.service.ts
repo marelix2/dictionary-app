@@ -42,14 +42,23 @@ export class AddWordServiceService {
 
   }
 
-  getSingleWord(word): Observable<DictWordModel[]>{
+  getSingleWord(word , lang): Observable<DictWordModel[]>{
 
-   this.singleWordColl =  this.afs.collection('words', ref =>{
-    return ref.where('key','==', word);
+   return this.words =  this.afs.collection('words', ref =>{
+     if(lang == 'ENG'){
+       return ref.where('key','==', word);
+     } else {
+       return ref.where('word','==', word);
+     }
   }
-  );
+  ).snapshotChanges().map(changes => {
+     return changes.map(c => {
+       const data = c.payload.doc.data() as DictWordModel;
+       data.id = c.payload.doc.id;
+       return data;
+     })
+   })
 
-    return this.words = this.singleWordColl.valueChanges();
 
   }
 

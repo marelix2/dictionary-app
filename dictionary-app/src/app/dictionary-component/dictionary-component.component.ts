@@ -12,7 +12,7 @@ import {Observable} from "rxjs/Observable";
 })
 export class DictionaryComponent implements OnInit {
 
-  word: Observable<DictWordModel[]>;
+  word: DictWordModel[];
 
 
   constructor(private route: ActivatedRoute,
@@ -24,12 +24,15 @@ export class DictionaryComponent implements OnInit {
 
   loadWord(){
     const word = this.route.snapshot.params['key'];
+    const lang = this.route.snapshot.params['lang'];
 
-    console.log("wartosc word => " + word);
+    console.log("wartosc => " + word + " " + lang);
 
-    this.word = this.addWordService.getSingleWord(word);
+   this.addWordService.getSingleWord(word, lang).subscribe(w => {
+     this.word = w;
+   });
 
-    console.log(this.addWordService);
+    console.log(this.word);
   }
 
 }

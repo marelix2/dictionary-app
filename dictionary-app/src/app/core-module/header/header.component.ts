@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   searchWord: DictWordModel;
   showDropDown = false;
   plWord = true;
-  idd: string;
+  lang: string = 'PL';
 
   constructor( private formBuilder: FormBuilder,
                private addWordService: AddWordServiceService ) { }
@@ -45,10 +45,12 @@ export class HeaderComponent implements OnInit {
   }
 
   showPolishWords(): void {
+    this.lang = 'PL';
     this.plWord = true;
   }
 
   showAngishWords(): void {
+    this.lang = 'ENG';
     this.plWord = false;
   }
 
