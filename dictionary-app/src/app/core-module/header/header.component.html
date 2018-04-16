@@ -1,15 +1,15 @@
 <form [formGroup]="searchForm" >
   <mat-form-field class="form" >
-    <input matInput formControlName='search' (click)="toggleDropDown()" type="text" placeholder="Podaj słowo"/>
+    <input matInput formControlName='search' (click)="toggleDropDown()" type="text" placeholder="Podaj słowo" autocomplete="off"/>
     <div *ngIf="plWord && showDropDown" class="state-container-dropdown" >
-      <div (click)="selectValue(word['word'])" class="words" *ngFor="let word of words | searchFilterPL: getSearchValue()">
+      <div (click)="selectValue(word['word'])" class="words" *ngFor="let word of words | searchFilterPL: getSearchValue() async">
         <p>{{word?.word}}</p>
 
     </div>
     </div>
 
       <div *ngIf="!plWord && showDropDown" class="state-container-dropdown" >
-        <div (click)="selectValue(word['key'])" class="words" *ngFor="let word of words | searchFilterAng: getSearchValue()">
+        <div (click)="selectValue(word['key'])" class="words" *ngFor="let word of words | searchFilterAng: getSearchValue() async">
           <p>{{word?.key}}</p>
         </div>
     </div>
@@ -18,9 +18,10 @@
 
   <button mat-fab color="primary" (click)="showPolishWords()">PL</button>
   <button mat-fab color="primary" (click)="showAngishWords()">ANG</button>
-  <button mat-raised-button color="primary" [routerLink]="['/search']">Tłumacz</button>
+  <button mat-raised-button color="primary" [routerLink]="['/search', searchForm.value.search]" >Tłumacz</button>
 
 </form>
+
 
 
 <!--<pre> {{searchForm.value | json}}</pre>-->

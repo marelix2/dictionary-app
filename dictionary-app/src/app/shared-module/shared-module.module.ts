@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {DictionarySearchService} from './dictionary-search.service';
+import {AddWordServiceService} from "./add-word-service.service";
 
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  providers:[DictionarySearchService],
+  providers:[AddWordServiceService],
   declarations: []
 })
 export class SharedModule { }

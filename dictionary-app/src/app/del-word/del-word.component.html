@@ -12,7 +12,7 @@
     <tr *ngFor="let word of words">
       <td>{{word.word}}</td>
       <td>{{word.key}}</td>
-      <td>( X )</td>
+      <td><button mat-raised-button color="primary" (click)="delWord(word)" >Usuń</button></td>
     </tr>
     </tbody>
   </table>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {DictionarySearchService} from '../../shared-module/dictionary-search.service';
-import {DictionaryWordModel} from '../../shared-module/dictionaryWord.model';
+import {AddWordServiceService} from "../../shared-module/add-word-service.service";
 
 @Component({
   selector: 'app-header',
@@ -11,12 +10,14 @@ import {DictionaryWordModel} from '../../shared-module/dictionaryWord.model';
 export class HeaderComponent implements OnInit {
 
   searchForm: FormGroup;
-  words: DictionaryWordModel[];
+  words: DictWordModel[];
+  searchWord: DictWordModel;
   showDropDown = false;
   plWord = true;
+  idd: string;
 
   constructor( private formBuilder: FormBuilder,
-               private dictionarySearch: DictionarySearchService) { }
+               private addWordService: AddWordServiceService ) { }
 
   ngOnInit() {
     this.searchForm = this.searchFormBuild();
@@ -34,7 +35,7 @@ export class HeaderComponent implements OnInit {
 
   loadWords(): void {
 
-    this.dictionarySearch.getWords().subscribe((words) => {
+    this.addWordService.getWords().subscribe((words) => {
       this.words = words;
     });
   }
@@ -55,10 +56,13 @@ export class HeaderComponent implements OnInit {
     return this.searchForm.value.search;
   }
 
+
   selectValue(word) {
 
     this.searchForm.patchValue({'search' : word});
     this.showDropDown = false;
 
   }
+
+
 }

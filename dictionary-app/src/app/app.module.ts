@@ -7,13 +7,15 @@ import {CoreModule} from './core-module/core-module.module';
 import {SharedModule} from './shared-module/shared-module.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DictionarySearchService} from './shared-module/dictionary-search.service';
 import {HttpClientModule} from '@angular/common/http';
 import {DictionaryComponent} from './dictionary-component/dictionary-component.component';
 import {AddingWordComponent} from './adding-word-component/adding-word-component.component';
 import { DelWordComponent } from './del-word/del-word.component';
 import {AppRoutingModule} from './app-routing.module';
 import {CoreRoutingModule} from "./core-module/core-routing.module";
+import {environment} from "../environments/environment";
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 
 @NgModule({
@@ -33,11 +35,11 @@ import {CoreRoutingModule} from "./core-module/core-routing.module";
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
-
-
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
-  providers: [DictionarySearchService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,29 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import {DictionarySearchService} from '../shared-module/dictionary-search.service';
-import {DictionaryWordModel} from '../shared-module/dictionaryWord.model';
+import {Component, DoCheck, OnChanges, OnInit} from '@angular/core';
+import {AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from "angularfire2/firestore";
+import {Observable} from "rxjs/Observable";
+import {AddWordServiceService} from "../shared-module/add-word-service.service";
 
 @Component({
   selector: 'app-del-word',
   templateUrl: './del-word.component.html',
   styleUrls: ['./del-word.component.css']
 })
-export class DelWordComponent implements OnInit {
+export class DelWordComponent implements OnInit{
 
-  words: DictionaryWordModel[]
+  words: DictWordModel[];
 
-  constructor( private dictionaryService: DictionarySearchService) { }
+
+  constructor( private addWordsService: AddWordServiceService) {
+    this.loadWords();
+  }
 
   ngOnInit() {
+    console.log("przeladowanie");
     this.loadWords();
   }
 
 
-  loadWords(){
 
-    this.dictionaryService.getWords().subscribe((words) => {
+
+
+loadWords(){
+    this.addWordsService.getWords().subscribe((words) => {
       this.words = words;
-    })
+    });
   }
 
+  delWord(word: DictWordModel){
+    this.addWordsService.deleteWord(word);
+
+  }
 
 }

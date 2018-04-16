@@ -6,7 +6,7 @@ import {DelWordComponent} from './del-word/del-word.component';
 
 const APP_ROUTE: Route[] = [
   {
-    path: 'search',
+    path: 'search/:key',
     component: <any>DictionaryComponent
   },
   {
@@ -21,7 +21,7 @@ const APP_ROUTE: Route[] = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(APP_ROUTE)
+    RouterModule.forRoot(APP_ROUTE, )
   ],
   exports: [RouterModule]
 
