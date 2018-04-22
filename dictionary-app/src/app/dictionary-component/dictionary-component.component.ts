@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {AddWordServiceService} from "../shared-module/add-word-service.service";
 import {observableToBeFn} from "rxjs/testing/TestScheduler";
 import {Observable} from "rxjs/Observable";
+import {componentRefresh} from "@angular/core/src/render3/instructions";
 
 
 @Component({
@@ -10,29 +11,36 @@ import {Observable} from "rxjs/Observable";
   templateUrl: './dictionary.component.html',
   styleUrls: ['./dictionary.component.css']
 })
-export class DictionaryComponent implements OnInit {
+export class DictionaryComponent implements  OnInit {
 
   word: DictWordModel[];
-
+  private key;
 
   constructor(private route: ActivatedRoute,
               private addWordService: AddWordServiceService) { }
 
   ngOnInit() {
     this.loadWord();
+
+  }
+  ngDoCheck(){
+    if(this.key != this.route.snapshot.params['key'] ) this.loadWord();
   }
 
   loadWord(){
-    const word = this.route.snapshot.params['key'];
+
+     this.key = this.route.snapshot.params['key'];
     const lang = this.route.snapshot.params['lang'];
 
-    console.log("wartosc => " + word + " " + lang);
+    console.log("wartosc => " + this.key + " " + lang);
 
-   this.addWordService.getSingleWord(word, lang).subscribe(w => {
+   this.addWordService.getSingleWord(this.key, lang).subscribe(w => {
      this.word = w;
    });
 
     console.log(this.word);
   }
+
+
 
 }

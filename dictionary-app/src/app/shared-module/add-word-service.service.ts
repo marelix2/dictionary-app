@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {AngularFirestore , AngularFirestoreCollection, AngularFirestoreDocument} from "angularfire2/firestore";
+import {Injectable} from '@angular/core';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from "angularfire2/firestore";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
@@ -36,33 +36,30 @@ export class AddWordServiceService {
 
   }
 
-  deleteWord(word: DictWordModel){
-      this.wordDoc = this.afs.doc(`words/${word.id}`);
-      this.wordDoc.delete();
-
+  deleteWord(word: DictWordModel) {
+    this.wordDoc = this.afs.doc(`words/${word.id}`);
+    this.wordDoc.delete();
   }
 
-  getSingleWord(word , lang): Observable<DictWordModel[]>{
+  getSingleWord(word, lang): Observable<DictWordModel[]> {
 
-   return this.words =  this.afs.collection('words', ref =>{
-     if(lang == 'ENG'){
-       return ref.where('key','==', word);
-     } else {
-       return ref.where('word','==', word);
-     }
+    return this.words = this.afs.collection('words', ref => {
+        if (lang == 'ENG') {
+          return ref.where('key', '==', word);
+        } else {
+          return ref.where('word', '==', word);
+        }
+      }
+    ).snapshotChanges().map(changes => {
+      return changes.map(c => {
+        const data = c.payload.doc.data() as DictWordModel;
+        data.id = c.payload.doc.id;
+        return data;
+      })
+    })
+
+
   }
-  ).snapshotChanges().map(changes => {
-     return changes.map(c => {
-       const data = c.payload.doc.data() as DictWordModel;
-       data.id = c.payload.doc.id;
-       return data;
-     })
-   })
-
-
-  }
-
-
 
 
 }

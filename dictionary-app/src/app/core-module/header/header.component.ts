@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {AddWordServiceService} from "../../shared-module/add-word-service.service";
+import {DictionaryComponent} from "../../dictionary-component/dictionary-component.component";
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
   lang: string = 'PL';
 
   constructor( private formBuilder: FormBuilder,
-               private addWordService: AddWordServiceService ) { }
+               private addWordService: AddWordServiceService) { }
 
   ngOnInit() {
     this.searchForm = this.searchFormBuild();
@@ -65,6 +66,8 @@ export class HeaderComponent implements OnInit {
     this.showDropDown = false;
 
   }
+
+
 
 
 }
