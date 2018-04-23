@@ -11,7 +11,7 @@ const APP_ROUTE: Route[] = [
   },
   {
     path: 'add',
-    component: <any> AddingWordComponent
+    component: <any>AddingWordComponent
   },
   {
     path: 'del',
@@ -21,7 +21,7 @@ const APP_ROUTE: Route[] = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(APP_ROUTE, )
+    RouterModule.forRoot(APP_ROUTE)
   ],
   exports: [RouterModule]
 

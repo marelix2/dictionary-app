@@ -18,7 +18,7 @@ export class DelWordComponent implements OnInit{
   }
 
   ngOnInit() {
-    console.log("przeladowanie");
+
     this.loadWords();
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, FormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, Validators} from '@angular/forms';
 import {AddWordServiceService} from "../shared-module/add-word-service.service";
 import {validate} from "codelyzer/walkerFactory/walkerFn";
 
@@ -25,8 +25,8 @@ export class AddingWordComponent implements OnInit {
   addWordFormBuild(): FormGroup {
 
     return this.formBuilder.group({
-      word:[''],
-      key:['']
+      word:['',Validators.required],
+      key:['',Validators.required]
     });
   }
 
